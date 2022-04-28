@@ -32,6 +32,7 @@ button {
 }
 :root {
   --gray-text-color: #828282;
+  --dark-gray-text-color: #828282;
   --main-text-color: #000000;
   --stroke-color: #eeeeee;
   --attention-color: #eb5757;

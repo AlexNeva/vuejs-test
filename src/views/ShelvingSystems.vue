@@ -5,8 +5,21 @@
         <h1 class="shelving__title section-title">
           Комплекты стеллажных систем
         </h1>
-        <div class="shelving__filters">фильтры</div>
-        <CardList :items="items" />
+        <div class="shelving__filters">
+          <ItemsSorter
+            class="shelving__filter"
+            :options="sortOptions"
+            :modelValue="selectedSort"
+            @update:modelValue="setSelectedSort"
+          />
+          <ItemsFilter
+            class="shelving__filter"
+            :options="materials"
+            :modelValue="selectedMaterial"
+            @update:modelValue="setSelectedMaterial"
+          />
+        </div>
+        <CardList :items="sortedAndFilteredItems" />
       </div>
     </section>
   </main>
@@ -14,24 +27,37 @@
 
 <script>
 import CardList from "@/components/CardList.vue";
-import { mapState, mapActions, mapMutations } from "vuex";
+import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import ItemsSorter from "@/components/ItemsSorter.vue";
+import ItemsFilter from "@/components/ItemsFilter.vue";
 export default {
   name: "ShelvingSystemsPage",
-  components: { CardList },
+  components: { CardList, ItemsSorter, ItemsFilter },
   methods: {
     ...mapMutations({
       setItems: "items/setItems",
+      setSelectedSort: "items/setSelectedSort",
+      setSelectedMaterial: "items/setSelectedMaterial",
+      setMaterials: "items/setMaterials",
     }),
     ...mapActions({
       fetchItems: "items/fetchItems",
+      fetchMaterials: "items/fetchMaterials",
     }),
   },
   mounted() {
     this.fetchItems();
+    this.fetchMaterials();
   },
   computed: {
     ...mapState({
       items: (state) => state.items.items,
+      sortOptions: (state) => state.items.sortOptions,
+      materials: (state) => state.items.materials,
+    }),
+    ...mapGetters({
+      sortedItems: "items/sortedItems",
+      sortedAndFilteredItems: "items/sortedAndFilteredItems",
     }),
   },
 };
@@ -47,6 +73,14 @@ export default {
   // .shelving__filters
 
   &__filters {
+    display: flex;
+    margin-bottom: 2.5rem;
+  }
+
+  &__filter {
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
   }
 
   // .shelving__cards
