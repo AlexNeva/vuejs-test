@@ -8,12 +8,12 @@ const routes = [
     component: HomePage,
   },
   {
-    path: "/vuejs-test/storage-systems",
+    path: "/storage-systems",
     name: "storage-systems",
     component: () => import("@/views/StorageSystems.vue"),
   },
   {
-    path: "/vuejs-test/shelving-systems",
+    path: "/shelving-systems",
     name: "shelving-systems",
     component: () => import("@/views/ShelvingSystems.vue"),
   },
