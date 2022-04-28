@@ -11,7 +11,7 @@ export default {
         { value: "up", name: "Цена по возрастанию" },
         { value: "down", name: "Цена по убыванию" },
       ],
-      materials: [{ id: "0", value: "", name: "Все" }],
+      materials: [],
       favoritedItems: JSON.parse(localStorage.getItem("favorited")) || [],
       cart: [],
     };
@@ -94,11 +94,10 @@ export default {
         alert(error);
       }
     },
-    async fetchMaterials({ state, commit }) {
+    async fetchMaterials({ commit }) {
       try {
         const response = await axios.get("/database/materials.json");
-        const data = [...state.materials, ...response.data];
-        commit("setMaterials", data);
+        commit("setMaterials", response.data);
       } catch (error) {
         alert(error);
       }
