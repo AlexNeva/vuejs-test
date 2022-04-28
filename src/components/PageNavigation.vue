@@ -30,12 +30,28 @@ export default {
 .page-navigation {
   &__list {
     display: flex;
+    align-items: center;
   }
 
   &__item {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      &::after {
+        content: "/";
+        color: var(--gray-text-color);
+        padding: 0 0.9rem;
+      }
+    }
   }
 
   &__link {
+    color: var(--gray-text-color);
+    text-decoration: none;
+
+    &.router-link-active {
+      color: var(--main-text-color);
+    }
   }
 }
 </style>

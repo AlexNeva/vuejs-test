@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <h1>Home Page</h1>
+      <h1 class="section-title">Home Page</h1>
     </div>
   </main>
 </template>
