@@ -106,6 +106,10 @@ export default {
     position: relative;
     padding-bottom: 75%;
 
+    @media (max-width: 30em) {
+      padding-bottom: 50%;
+    }
+
     img {
       position: absolute;
       top: 0;
@@ -122,7 +126,7 @@ export default {
     padding: 0.8rem;
     display: grid;
     grid-template-columns: 1fr auto;
-    gap: 0.8rem;
+    grid-auto-rows: 1fr;
   }
 
   // .card__code
@@ -139,6 +143,9 @@ export default {
   &__name {
     grid-column: -1 / 1;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   // .card__price

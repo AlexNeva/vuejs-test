@@ -22,10 +22,22 @@ export default {
 .cards {
   padding: 2.5rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem 2.8rem;
 
-  @media (max-width: 36em) {
+  @media (max-width: 75em) {
+    gap: 1.5rem 1.5rem;
+  }
+
+  @media (max-width: 62em) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 48em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 30em) {
     grid-template-columns: 1fr;
   }
 }
