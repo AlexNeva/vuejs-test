@@ -3,17 +3,17 @@ import HomePage from "@/views/HomePage.vue";
 
 const routes = [
   {
-    path: "/",
+    path: "/vuejs-test",
     name: "home",
     component: HomePage,
   },
   {
-    path: "/storage-systems",
+    path: "/vuejs-test/storage-systems",
     name: "storage-systems",
     component: () => import("@/views/StorageSystems.vue"),
   },
   {
-    path: "/shelving-systems",
+    path: "/vuejs-test/shelving-systems",
     name: "shelving-systems",
     component: () => import("@/views/ShelvingSystems.vue"),
   },
