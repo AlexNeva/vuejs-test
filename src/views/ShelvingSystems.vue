@@ -6,7 +6,7 @@
           Комплекты стеллажных систем
         </h1>
         <div class="shelving__filters">фильтры</div>
-        <CardList />
+        <CardList :items="items" />
       </div>
     </section>
   </main>
@@ -14,9 +14,26 @@
 
 <script>
 import CardList from "@/components/CardList.vue";
+import { mapState, mapActions, mapMutations } from "vuex";
 export default {
   name: "ShelvingSystemsPage",
   components: { CardList },
+  methods: {
+    ...mapMutations({
+      setItems: "items/setItems",
+    }),
+    ...mapActions({
+      fetchItems: "items/fetchItems",
+    }),
+  },
+  mounted() {
+    this.fetchItems();
+  },
+  computed: {
+    ...mapState({
+      items: (state) => state.items.items,
+    }),
+  },
 };
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <CardItem v-for="(card, idx) in 20" :key="idx" />
+    <CardItem v-for="item in items" :key="item.id" :item="item" />
   </div>
 </template>
 
@@ -9,10 +9,16 @@ import CardItem from "./CardItem.vue";
 export default {
   name: "CardList",
   components: { CardItem },
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
