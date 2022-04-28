@@ -25,6 +25,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    modelValue: {
+      type: String,
+      default: "",
+    },
   },
   methods: {
     changeOptions(evt) {

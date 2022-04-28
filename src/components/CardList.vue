@@ -20,8 +20,13 @@ export default {
 
 <style lang="scss" scoped>
 .cards {
+  padding: 2.5rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 2.5rem 2.8rem;
+
+  @media (max-width: 36em) {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

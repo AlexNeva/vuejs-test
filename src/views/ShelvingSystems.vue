@@ -54,6 +54,8 @@ export default {
       items: (state) => state.items.items,
       sortOptions: (state) => state.items.sortOptions,
       materials: (state) => state.items.materials,
+      selectedSort: (state) => state.items.selectedSort,
+      selectedMaterial: (state) => state.items.selectedMaterial,
     }),
     ...mapGetters({
       sortedItems: "items/sortedItems",
@@ -74,23 +76,12 @@ export default {
 
   &__filters {
     display: flex;
-    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    margin: -0.75rem;
   }
 
   &__filter {
-    &:not(:last-child) {
-      margin-right: 1.5rem;
-    }
-  }
-
-  // .shelving__cards
-
-  &__cards {
-  }
-
-  // .shelving__card
-
-  &__card {
+    margin: 0.75rem;
   }
 }
 </style>

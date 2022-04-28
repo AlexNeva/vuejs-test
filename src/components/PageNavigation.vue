@@ -52,6 +52,10 @@ export default {
     &.router-link-active {
       color: var(--main-text-color);
     }
+
+    @media (max-width: 36em) {
+      font-size: 0.75rem;
+    }
   }
 }
 </style>

@@ -16,5 +16,9 @@
   &__select {
     font-size: 0.875rem;
     padding: 0.2rem 0.5rem;
+
+    @media (max-width: 36em) {
+      font-size: 0.7rem;
+    }
   }
 }

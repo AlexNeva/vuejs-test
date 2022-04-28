@@ -12,6 +12,8 @@ export default {
         { value: "down", name: "Цена по убыванию" },
       ],
       materials: [{ id: "0", value: "", name: "Все" }],
+      favoritedItems: JSON.parse(localStorage.getItem("favorited")) || [],
+      cart: [],
     };
   },
   getters: {
@@ -41,7 +43,15 @@ export default {
   },
   mutations: {
     setItems(state, items) {
-      state.items = items;
+      // state.items = items.map((item) => ({ ...item, favorited: false }));
+      state.items = items.map((item) => {
+        const favIdArr = state.favoritedItems.map((item) => item.id);
+
+        if (favIdArr.includes(item.id)) {
+          return { ...item, favorited: true };
+        }
+        return { ...item, favorited: false };
+      });
     },
     setSelectedSort(state, selectedSort) {
       state.selectedSort = selectedSort;
@@ -51,6 +61,28 @@ export default {
     },
     setMaterials(state, materials) {
       state.materials = materials;
+    },
+    setFavoritedItems(state, item) {
+      if (!item.favorited && !state.favoritedItems.includes(item)) {
+        state.favoritedItems.push(item);
+      } else {
+        state.favoritedItems = state.favoritedItems.filter(
+          (it) => it.id !== item.id
+        );
+      }
+      localStorage.setItem("favorited", JSON.stringify(state.favoritedItems));
+    },
+    setFavoritedItem(state, id) {
+      state.items = state.items.map((item) => {
+        if (item.id === id) {
+          return { ...item, favorited: !item.favorited };
+        }
+        return item;
+      });
+    },
+    setCart(state, item) {
+      state.cart.push(item);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
   actions: {
@@ -70,6 +102,15 @@ export default {
       } catch (error) {
         alert(error);
       }
+    },
+    addToFavorited({ commit }, item) {
+      commit("setFavoritedItems", item);
+    },
+    addToCart({ commit }, item) {
+      commit("setCart", item);
+    },
+    toggleFavoritedItem({ commit }, id) {
+      commit("setFavoritedItem", id);
     },
   },
   namespaced: true,

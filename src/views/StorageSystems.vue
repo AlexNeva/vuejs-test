@@ -1,7 +1,7 @@
 <template>
   <main>
     <div class="container">
-      <h1 class="section-title">Storage systems</h1>
+      <h1 class="section-title">Системы хранения</h1>
     </div>
   </main>
 </template>
