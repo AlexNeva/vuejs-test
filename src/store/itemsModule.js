@@ -88,7 +88,7 @@ export default {
   actions: {
     async fetchItems({ commit }) {
       try {
-        const response = await axios.get("/database/items.json");
+        const response = await axios.get("/vuejs-test/database/items.json");
         commit("setItems", response.data);
       } catch (error) {
         alert(error);
@@ -96,7 +96,7 @@ export default {
     },
     async fetchMaterials({ commit }) {
       try {
-        const response = await axios.get("/database/materials.json");
+        const response = await axios.get("/vuejs-test/database/materials.json");
         commit("setMaterials", response.data);
       } catch (error) {
         alert(error);
