@@ -13,7 +13,7 @@ export default {
       ],
       materials: [],
       favoritedItems: JSON.parse(localStorage.getItem("favorited")) || [],
-      cart: [],
+      cart: JSON.parse(localStorage.getItem("cart")) || [],
     };
   },
   getters: {
